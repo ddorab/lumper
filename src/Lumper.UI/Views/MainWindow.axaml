@@ -9,6 +9,7 @@
         x:Class="Lumper.UI.Views.MainWindow"
         Icon="/Assets/Lumper.png"
         Closing="Window_OnClosing"
+        Opened="Window_OnOpened"
         Title="{Binding BspModel.FilePath, StringFormat='{}Lumper {0}'}"
         TransparencyLevelHint="AcrylicBlur"
         ExtendClientAreaToDecorationsHint="True"
