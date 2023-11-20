@@ -50,6 +50,12 @@
                     </MenuItem>
                 </Menu>
             </DockPanel>
+            <DockPanel Grid.Row="0" Grid.Column="0" HorizontalAlignment="Center" VerticalAlignment="Center" ClipToBounds="True">
+                <TextBlock DockPanel.Dock="Top"
+                           Text="{Binding BspModel.FileName}"
+                           IsHitTestVisible="False"
+                           IsVisible="{Binding IsTitleTextVisible}"></TextBlock>
+            </DockPanel>
             <DockPanel Grid.Row="0" Grid.Column="0" Width="250" HorizontalAlignment="Center" VerticalAlignment="Bottom" ClipToBounds="True">
                 <ProgressBar x:Name="TitleProgressBar"
                              IsIndeterminate="True"

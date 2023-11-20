@@ -161,6 +161,11 @@ public partial class MainWindowViewModel
 
         BspModel = new BspViewModel(bspFile);
         TasksModel = new Tasks.TasksViewModel(bspFile);
+
+        BspModel.FilePath = path;
+        BspModel.FileName = Path.GetFileName(path);
+
+        IsTitleTextVisible = true;
         IsProgressBarVisible = true;
 
         if (BspModel.BspNode is BspNodeViewModel bspNodeViewModel)
@@ -202,6 +207,7 @@ public partial class MainWindowViewModel
         if (result != ButtonResult.Ok)
             return;
         BspModel = null;
+        IsTitleTextVisible = false;
         IsTitleProgressBarVisible = false;
         IsProgressBarVisible = false;
     }

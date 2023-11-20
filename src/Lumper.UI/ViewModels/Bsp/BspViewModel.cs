@@ -10,6 +10,7 @@ namespace Lumper.UI.ViewModels.Bsp;
 public partial class BspViewModel : ViewModelBase
 {
     private string? _filePath;
+    private string? _fileName;
 
     public BspViewModel(BspFile bspFile)
     {
@@ -39,6 +40,12 @@ public partial class BspViewModel : ViewModelBase
     {
         get => _filePath;
         set => this.RaiseAndSetIfChanged(ref _filePath, value);
+    }
+
+    public string? FileName
+    {
+        get => _fileName;
+        set => this.RaiseAndSetIfChanged(ref _fileName, value);
     }
 
     public void Update()
