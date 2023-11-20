@@ -17,6 +17,7 @@ public partial class MainWindowViewModel : ViewModelBase
     private BspViewModel? _bspModel;
     private TasksViewModel? _tasksModel;
     private bool _isProgressBarVisible;
+    private bool _isTitleProgressBarVisible;
 
     public MainWindowViewModel()
     {
@@ -43,6 +44,12 @@ public partial class MainWindowViewModel : ViewModelBase
     {
         get => _isProgressBarVisible;
         set => this.RaiseAndSetIfChanged(ref _isProgressBarVisible, value);
+    }
+
+    public bool IsTitleProgressBarVisible
+    {
+        get => _isTitleProgressBarVisible;
+        set => this.RaiseAndSetIfChanged(ref _isTitleProgressBarVisible, value);
     }
     public ViewModelBase? Content
     {

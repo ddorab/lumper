@@ -104,14 +104,18 @@ public partial class MainWindowViewModel
 
         try
         {
+            IsTitleProgressBarVisible = true;
             //TODO: Copy bsp model tree for fallback if error occurs
             await Task.Run(_bspModel.Update);
             await using var writer =
                 new BspFileWriter(_bspModel.BspFile, await file.OpenWriteAsync());
             await writer.Save();
+
+            IsTitleProgressBarVisible = false;
         }
         catch (Exception e)
         {
+            IsTitleProgressBarVisible = false;
             MessageBoxManager.GetMessageBoxStandardWindow("Error",
                 $"Error while saving file \n{e.Message}");
             return;
@@ -129,15 +133,18 @@ public partial class MainWindowViewModel
         {
             using (var stream = File.OpenWrite(path))
             {
+                IsTitleProgressBarVisible = true;
                 //TODO: Copy bsp model tree for fallback if error occurs
                 await Task.Run(_bspModel.Update);
                 await using var writer =
                     new BspFileWriter(_bspModel.BspFile, stream);
                 await writer.Save();
+                IsTitleProgressBarVisible = false;
             }
         }
         catch (Exception e)
         {
+            IsTitleProgressBarVisible = false;
             MessageBoxManager.GetMessageBoxStandardWindow("Error",
                 $"Error while saving file \n{e.Message}");
             return;
@@ -148,6 +155,8 @@ public partial class MainWindowViewModel
 
     private async void LoadBsp(string path)
     {
+        Content = null;
+
         var bspFile = new BspFile(path);
 
         BspModel = new BspViewModel(bspFile);
@@ -193,6 +202,8 @@ public partial class MainWindowViewModel
         if (result != ButtonResult.Ok)
             return;
         BspModel = null;
+        IsTitleProgressBarVisible = false;
+        IsProgressBarVisible = false;
     }
 
     public void ExitCommand()

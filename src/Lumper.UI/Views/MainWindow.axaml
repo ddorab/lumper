@@ -50,6 +50,11 @@
                     </MenuItem>
                 </Menu>
             </DockPanel>
+            <DockPanel Grid.Row="0" Grid.Column="0" Width="250" HorizontalAlignment="Center" VerticalAlignment="Bottom" ClipToBounds="True">
+                <ProgressBar x:Name="TitleProgressBar"
+                             IsIndeterminate="True"
+                             IsVisible="{Binding IsTitleProgressBarVisible}"></ProgressBar>
+            </DockPanel>
             <DockPanel Grid.Row="1" Grid.Column="0" Width="250" HorizontalAlignment="Center" ClipToBounds="True">
                 <ProgressBar x:Name="ProgressBar"
                              DockPanel.Dock="Top"
